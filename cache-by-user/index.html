@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service worker</title>
+    <link rel="stylesheet" href="./style.css">
+    <script>
+        const cacheName = "app_media_v1";
+        const registerSW = async () => {
+            if ('serviceWorker' in navigator) {
+                try {
+                    const reg = await navigator.serviceWorker.register('./sw.js', {
+                        scope: './'
+                    })
+                    if (reg.installing) console.log('SW is installing')
+                    else if (reg.active) console.log('SW is active')
+                    else if (reg.waiting) console.log('SW is waiting')
+                    else if (req.onupdatefound) {
+                        req.onupdatefound = (e) => {
+                            console.log('update', e);
+                        }
+                        console.log('Congrats! New update is available');
+                        caches.delete('cacheName')
+                    }
+                } catch (e) {
+                    console.log(e)
+                }
+            }
+        }
+        registerSW()
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h1>service worker</h1>
+            <div class="mt-10px">
+                <button id="show-cached-list">show Cached list</button>
+                <button id="back" class="d-none">back</button>
+            </div>
+            <div id="list" class="mt-10px">
+                <div>
+                    <img src="../static/img.jpg" width="200px" height="300px" />
+                </div>
+                <div class="mt-10px">
+                    <button id="btn">cache photo</button>
+                </div>
+            </div>
+            <div id="cached-list" class="mt-10px d-none"></div>
+        </div>
+    </div>
+    <script src="./app.js" type="module"></script>
+</body>
+
+</html>

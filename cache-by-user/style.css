@@ -1,0 +1,107 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: monospace
+}
+
+.container {
+    background: rgb(39, 38, 38);
+    color: white;
+    font-size: 12px;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.mt-10px {
+    margin-top: 10px;
+}
+
+button {
+    background: rgb(3, 99, 128);
+    border: 0;
+    box-shadow: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+button:disabled{
+    opacity: 0.5;
+    cursor: auto;
+}
+.d-none{
+    display: none;
+}
+/** download list **/
+#download-list {
+    width: 100%;
+}
+
+/** toast **/
+.toast {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    display: grid;
+    gap: 10px;
+}
+
+.toast .toast-card {
+    background: rgb(255, 170, 0);
+    color: white;
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    transition: all 0.7s;
+    animation: fade 0.5s forwards;
+    position: relative
+}
+
+.toast .toast-card .timer {
+    height: 3px;
+    background: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.fadeout {
+    animation: fadeout 0.5s forwards !important;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        top: -100vh
+    }
+
+    to {
+        opacity: 1;
+        top: 0
+    }
+}
+
+@keyframes fadeout {
+    from {
+        right: 0;
+    }
+
+    to {
+        right: -200%;
+    }
+}

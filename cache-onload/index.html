@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service worker</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            background: rgb(39, 38, 38);
+            color: white;
+            font-size: 12px;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+    </style>
+    <script>
+        const registerSW = async () => {
+            if ('serviceWorker' in navigator) {
+                try {
+                    const reg = await navigator.serviceWorker.register('./sw.js', {
+                        scope: './'
+                    })
+                    if (reg.installing) console.log('SW is installing')
+                    else if (reg.active) console.log('SW is active')
+                    else if (reg.waiting) console.log('SW is waiting')
+                } catch (e) {
+                    console.log(e)
+                }
+            }
+        }
+        registerSW()
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h1>service worker</h1>
+            <img src="../static/img.jpg" width="300px" height="200px" alt="image" />
+        </div>
+    </div>
+</body>
+
+</html>
