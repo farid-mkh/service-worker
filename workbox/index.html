@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>workbox</title>
+    <style>
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100vh;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: rgb(41, 40, 40);
+            color: white;
+            overflow-wrap: break-word;
+            transition: background 500ms ease-in-out, color 200ms ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>Workbox</div>
+        <img width="200" height="300" src="../static/img.jpg" />
+    </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js', {
+                    scope: './'
+                })
+                    .then(() => {
+                        console.log('Service worker registered');
+                    })
+                    .catch((e) => {
+                        console.log('There was an error', e)
+                    })
+            })
+        }
+    </script>
+</body>
+
+</html>

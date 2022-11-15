@@ -1,0 +1,9 @@
+{
+  "name": "workbox-build",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "workbox-build": "^6.5.4"
+  }
+}
